@@ -1,0 +1,109 @@
+﻿<controls:MetroWindow x:Class="FalkorPressure.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FalkorPressure"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:views="clr-namespace:FalkorPressure.Views"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Falkor Pressure" Height="350" Width="525">
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Command="{Binding Path=OpenSettings}" >
+                <iconPacks:PackIconMaterial Kind="Settings" ToolTip="Open Settings"></iconPacks:PackIconMaterial>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="1" Grid.Column="1">
+           <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="StartButton" ToolTip="Start saving data to file" Margin="3">Start</Button>
+                    <Button x:Name="StopButton" ToolTip="Stop saving data to file" Margin="3">Stop</Button>
+                </StackPanel>
+               <CheckBox IsChecked="{Binding Path=SaveToFile}">Save To File</CheckBox>
+            </StackPanel>
+            
+
+            <oxy:PlotView Grid.Column="0" Model="{Binding Path=Alpha}"></oxy:PlotView>
+           
+        </DockPanel>
+        
+    </Grid>
+</controls:MetroWindow>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

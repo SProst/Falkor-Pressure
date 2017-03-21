@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="FalkorPressure.Views.PressureSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FalkorPressure.Views"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="326.258" d:DesignWidth="385.339">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">Data Rate (Hz)</TextBlock>
+            <controls:NumericUpDown x:Name="DataRate" Grid.Column="1" ToolTip="Rate of writing samples to file." Grid.Row="0" Value="{Binding Path=DataRate}" Minimum="1" Margin="3" MinWidth="100" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0">Record time (s)</TextBlock>
+            <controls:NumericUpDown x:Name="AcquisitionWindow" Value="{Binding Path=AcquisitionWindow}" Minimum="1" Margin="3" MinWidth="100" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"></controls:NumericUpDown>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">Samples to Average</TextBlock>
+            <controls:NumericUpDown x:Name="SamplesToAverage" Grid.Column="1" ToolTip="Rate of writing samples to file." Grid.Row="0" Value="{Binding Path=SamplesToAverage}" Minimum="1" Margin="3" MinWidth="100" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">Filter Rate (Hz)</TextBlock>
+            <controls:NumericUpDown x:Name="FilterRate" Grid.Column="1" Grid.Row="0" Value="{Binding Path=FilterRate}" Minimum="1" Margin="3" MinWidth="100" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock>Save file location:</TextBlock>
+            <TextBox x:Name="Directory" Text="{Binding Path=Directory}" Grid.Row="1"></TextBox>
+            <Button x:Name="SelectDirectoryButton" Grid.Column="1" Grid.Row="1" Margin="3" Content="..." HorizontalAlignment="Right" HorizontalContentAlignment="Center"></Button>
+
+        </Grid>
+        <Grid Grid.Row="5" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock>Save file name:</TextBlock>
+            <TextBox x:Name="FileName" Text="{Binding Path=FileName}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"></TextBox>
+        </Grid>
+
+        <GroupBox Header="Channels" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=AiChannels}" SelectedItem="{Binding Path=SelectedAiChannel}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}"></DataGridTextColumn>
+                        <controls:DataGridNumericUpDownColumn Binding="{Binding Path=MultiplierFactor}"></controls:DataGridNumericUpDownColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Path=AiPressureChannels}" SelectedItem="{Binding Path=SelectedAiPressureChannel}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}"></DataGridTextColumn>
+                        <controls:DataGridNumericUpDownColumn Binding="{Binding Path=MultiplierFactor}"></controls:DataGridNumericUpDownColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Grid.Column="0" Grid.Row="1" Command="{Binding Path=Add}">Add</Button>
+                <Button Grid.Column="1" Grid.Row="1" Command="{Binding Path=Remove}">Remove</Button>
+            </Grid>
+        </GroupBox>
+        
+
+    </Grid>
+</UserControl>
