@@ -1,12 +1,10 @@
-﻿<controls:MetroWindow x:Class="FalkorPressure.MainWindow"
+﻿<controls:MetroWindow x:Class="Falkor.Pressure.App.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FalkorPressure"
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:views="clr-namespace:FalkorPressure.Views"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="Falkor Pressure" Height="350" Width="525">
@@ -44,9 +42,7 @@
                     </TextBlock.Text>
                 </TextBlock>
             </StackPanel>
-            
-
-            <oxy:PlotView Grid.Column="0" Model="{Binding Path=Alpha}"></oxy:PlotView>
+           
            
         </DockPanel>
         

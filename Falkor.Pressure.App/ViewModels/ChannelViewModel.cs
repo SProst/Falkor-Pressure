@@ -1,9 +1,7 @@
 ﻿using System.Runtime.Serialization;
-using NationalInstruments;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
 
-namespace FalkorPressure.ViewModels
+namespace Falkor.Pressure.App.ViewModels
 {
     [DataContract]
     public class ChannelViewModel : ReactiveObject

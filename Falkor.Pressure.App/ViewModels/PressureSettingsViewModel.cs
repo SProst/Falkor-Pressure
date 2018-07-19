@@ -1,24 +1,17 @@
-﻿using System.Reactive;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.Serialization;
-using FalkorPressure.Properties;
-using MsgPack.Serialization;
+using Falkor.Pressure.App.Properties;
 using NationalInstruments.DAQmx;
-using StackExchange.Redis;
+using ReactiveUI;
 
-namespace FalkorPressure.ViewModels
+namespace Falkor.Pressure.App.ViewModels
 {
     [DataContract]
     public class PressureSettingsViewModel : ReactiveObject
     {
-        private IDatabase database;
-
         public PressureSettingsViewModel()
         {
             this.AcquisitionWindow = 1;
@@ -62,9 +55,9 @@ namespace FalkorPressure.ViewModels
             //var writer = SerializationContext.Default.GetSerializer<PressureSettingsViewModel>();
             //this.database = RedisPersist.Redis.Value.GetDatabase();
 
-            if (File.Exists(Properties.Settings.Default.ChannelsFile))
+            if (File.Exists(Settings.Default.ChannelsFile))
             {
-                using (var reader = File.OpenText(Properties.Settings.Default.ChannelsFile))
+                using (var reader = File.OpenText(Settings.Default.ChannelsFile))
                 {
                     using (var sr = new StreamReader(reader.BaseStream))
                     {
@@ -91,27 +84,24 @@ namespace FalkorPressure.ViewModels
             }
         }
 
-        [Reactive]
         [DataMember]
         public string Directory { get; set; }
 
-        [Reactive]
+
         [DataMember]
         public int AcquisitionWindow { get; set; }
 
-        [Reactive]
         [DataMember]
         public double DataRate { get; set; }
 
-        [Reactive]
+
         [DataMember]
         public string FileName { get; set; }
 
-        [Reactive]
+
         [DataMember]
         public double FilterRate { get; set; }
 
-        [Reactive]
         [DataMember]
         public double SamplesToAverage { get; set; }
 
@@ -126,10 +116,8 @@ namespace FalkorPressure.ViewModels
         [DataMember]
         public ReactiveList<ChannelViewModel> AiPressureChannels { get; set; }
 
-        [Reactive]
         public ChannelViewModel SelectedAiChannel { get; set; }
 
-        [Reactive]
         public ChannelViewModel SelectedAiPressureChannel { get; set; }
 
         public ReactiveList<Device> Devices { get; }

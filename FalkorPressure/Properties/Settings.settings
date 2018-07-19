@@ -5,5 +5,8 @@
     <Setting Name="ChannelsFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">channels.txt</Value>
     </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

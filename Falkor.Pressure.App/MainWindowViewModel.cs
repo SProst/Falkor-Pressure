@@ -6,25 +6,14 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Windows;
-using FalkorPressure.ViewModels;
-using FalkorPressure.Views;
-using MahApps.Metro.Controls;
-using MahApps.Metro.SimpleChildWindow;
-using MathNet.Numerics.Statistics;
+using Falkor.Pressure.App.ViewModels;
+using Falkor.Pressure.App.Views;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using MsgPack.Serialization;
-using NationalInstruments;
 using NationalInstruments.DAQmx;
-using OxyPlot;
-using OxyPlot.Axes;
-using OxyPlot.Series;
 using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-using StackExchange.Redis;
-using StackExchange.Redis.Extensions.Core;
 using Task = System.Threading.Tasks.Task;
 
-namespace FalkorPressure
+namespace Falkor.Pressure.App
 {
     public class MainWindowViewModel : ReactiveObject, IDisposable
     {
